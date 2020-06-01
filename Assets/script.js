@@ -1,9 +1,7 @@
-
 // Application will generate a password with 8-128 chatacters based on user-selected criteria.
 
-//Assignment Code + Event Listener to prompt questions when button pushed
-document.querySelector("#generate").addEventListener("click", writePassword);
-
+// Assignment Code
+var generateBtn = document.querySelector("#generate");
 // Character's arrays
 const alphaUpper = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 const alphaLower = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
@@ -12,39 +10,74 @@ const punctuation = ["!", "%", "&", ",", "*", "+", "-", ".", "/", "<", ">", "?",
 
 // Variable Declaration 
 var confirmLength = "";
-var confirmPunctuation;
-var confirmNumeric;
-var confirmalphaUpper;
-var confirmalphaLower;
+//var confirmalphaUpper;
+//var confirmalphaLower;
+//var confirmNumeric;
+//var confirmPunctuation;
 
 // Number of characters
 function generatePassword() {
-  var confirmLength = (prompt("How many characters do you wand to password to be?"));
+  var confirmLength = (prompt("How many characters do you want the password to be?"));
 
-  // Loop if answer is outside the parameters 
+// Loop for characters between 8 and 128
   while(confirmLength <= 7 || confirmLength >= 129) {
       alert("Password length must be between 8-128 characters Try again");
-      var confirmLength = (prompt("How many characters do you wand to password to be?"));
+      const confirmLength = (prompt("How many characters do you want the password to be?"));
       } 
 
-      // Show number of characters 
+// Show number of characters 
       alert(`Your password will have ${confirmLength} characters`);
 
-    // Determine parameters of password 
-    var confirmPunctuation = confirm("Click OK to confirm if you need special characters");
-    var confirmNumeric = confirm("Click OK to confirm if you need numeric characters");    
-    var confirmalphaLower = confirm("Click OK to confirm if you need lowercase characters");
+// Password booleans
     var confirmALphaUpper = confirm("Click OK to confirm if you need uppercase characters");
-      // Loop if answer is outside the parameters 
-      while(confirmALphaUpper === false && confirmalphaLower === false && confirmPunctuation === f === false) {
+    var confirmalphaLower = confirm("Click OK to confirm if you need lowercase characters");
+    var confirmNumeric = confirm("Click OK to confirm if you need numeric characters"); 
+    var confirmPunctuation = confirm("Click OK to confirm if you need special characters");
+       
+        
+// Loop if answer is outside the parameters 
+  while(confirmALphaUpper === false && confirmalphaLower === false && confirmPunctuation === f === false) {
         alert("You must choose at least one parameter");
-        var confirmPunctuation = confirm("Click OK to confirm if you would like to include special characters");
- = confirm("Click OK to confirm if you would like to include numeric characters");    
-        var confirmalphaLower = confirm("Click OK to confirm if you would like to include lowercase characters");
         var confirmALphaUpper = confirm("Click OK to confirm if you would like to include uppercase characters");   
+        var confirmalphaLower = confirm("Click OK to confirm if you would like to include lowercase characters");
+        var confirmNumeric= confirm("Click OK to confirm if you would like to include numeric characters"); 
+        var confirmPunctuation = confirm("Click OK to confirm if you would like to include special characters");   
     } 
 
-     
+// Loops
+var passwordCharacters = []
+
+if (confirmAlphaUpper) {
+  passwordCharacters = passwordCharacters.concat(alphaUpper)
+}
+if (confirmalphaLower) {
+  passwordCharacters = passwordCharacters.concat(alphaLower)
+}   
+if (confirmNumeric) {
+  passwordCharacters = passwordCharacters.concat(numeric)
+}
+if (confirmPunctuation) {
+  passwordCharacters = passwordCharacters.concat(punctuation)
+}
+
+  var randomPassword = ""
+  
+  for (var i = 0; i < confirmLength; i++) {
+    randomPassword = randomPassword + passwordCharacters[Math.floor(Math.random() * passwordCharacters.length)];
+    console.log(randomPassword)
+  }
+  return randomPassword;
+}
+
+
+ // Write password to the #password input
+ function writePassword() {
+   var password = generatePassword();
+   var passwordText = document.querySelector("#password");
+ 
+
+  // Add event listener to generate button
+  generateBtn.addEventListener("click", writePassword);
 
   passwordText.value = password;
 }
