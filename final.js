@@ -2,6 +2,7 @@
 
 // Assignment Code
 document.querySelector("#generate").addEventListener("click", writePassword);
+
 // Character's arrays
 const alphaUpper = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 const alphaLower = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
@@ -10,42 +11,29 @@ const punctuation = ["!", "%", "&", ",", "*", "+", "-", ".", "/", "<", ">", "?",
 
 // Variable Declaration 
 const confirmLength = "";
-//var confirmalphaUpper;
-//var confirmalphaLower;
-//var confirmNumeric;
-//var confirmPunctuation;
 
 // Number of characters
 function generatePassword() {
-  const confirmLength = (prompt("How many characters do you want the password to be?"));
+  const confirmLength = (prompt("How long should the password be?"));
 
 // Loop for characters between 8 and 128
   while(confirmLength <= 7 || confirmLength >= 129) {
-      alert("Password length must be between 8-128 characters Try again");
-      const confirmLength = (prompt("How many characters do you want the password to be?"));
+      alert("The password must be between 8-128 characters.");
+      const confirmLength = (prompt("How many characters do you want the password to have?"));
       } 
 console.log
 
 // Show number of characters 
-      alert(`Your password will have ${confirmLength} characters`);
+      alert(`The password will have ${confirmLength} characters.`);
 
 // Password booleans
-    var confirmAlphaUpper = confirm("Click OK to confirm if you need uppercase characters");
-    var confirmalphaLower = confirm("Click OK to confirm if you need lowercase characters");
-    var confirmNumeric = confirm("Click OK to confirm if you need numeric characters"); 
-    var confirmPunctuation = confirm("Click OK to confirm if you need special characters");
-       
-        
-// Loop if answer is outside the parameters 
-  while(confirmAlphaUpper === false && confirmalphaLower === false && confirmPunctuation === f === false) {
-        alert("You must choose at least one parameter");
-        var confirmAlphaUpper = confirm("Click OK to confirm if you would like to include uppercase characters");   
-        var confirmalphaLower = confirm("Click OK to confirm if you would like to include lowercase characters");
-        var confirmNumeric= confirm("Click OK to confirm if you would like to include numeric characters"); 
-        var confirmPunctuation = confirm("Click OK to confirm if you would like to include special characters");   
-    } 
+    var confirmAlphaUpper = confirm("Do you need uppercase letters?");
+    var confirmalphaLower = confirm("Do you need lowercase letters?");
+    var confirmNumeric = confirm("Do you need numeric characters?"); 
+    var confirmPunctuation = confirm("Do you need special characters?");
+      
 
-// Loops
+// Loops for characters
 var passwordCharacters = []
 
 if (confirmAlphaUpper) {
